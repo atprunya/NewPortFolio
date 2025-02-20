@@ -9,30 +9,29 @@
     <style>
         .page-title {
             border-bottom: solid 1px gray;
-            position: relative; /* アニメーション用の相対位置指定 */
+            position: relative;
         }
 
-        /* アニメーション用の下線 */
         .page-title::after {
             content: '';
             position: absolute;
             left: 0;
-            bottom: -1px; /* ボーダーの下に配置 */
-            width: 0; /* 最初は幅0 */
-            height: 2px; /* 下線の太さ */
-            background-color: #4F46E5; /* 下線の色（Tailwindのindigo-600） */
-            transition: width 0.3s ease; /* アニメーション効果 */
+            bottom: -1px;
+            width: 0;
+            height: 2px;
+            background-color: #4F46E5;
+            transition: width 0.3s ease;
         }
 
         .page-title:hover::after {
-            width: 100%; /* ホバー時に幅を100%に */
+            width: 100%;
         }
 
         /* リスト項目のアニメーション */
        .list-item-container li {
-          opacity: 0; /* 初期状態では非表示 */
-          transform: translateY(20px); /* 下から上に移動 */
-          transition: opacity 0.5s, transform 0.5s; /* アニメーション効果 */
+          opacity: 0;
+          transform: translateY(20px);
+          transition: opacity 0.5s, transform 0.5s;
         }
         .list-item-container.animate-list li{
             opacity: 1;
@@ -42,295 +41,354 @@
         .list-item-container{
             transition: all 0.5s;
         }
-        /*ホバー時の色*/
-        .hover-text-indigo-600:hover{
-            color: #4F46E5;
+
+        /* ホバー効果 */
+        .hover-bg-gray-100:hover {
+            background-color: #f7fafc;
         }
 
-        /* フォント（Noto Sans JPとRoboto）*/
+         /* リンクの色 */
+        .custom-link-color {
+            color: #607D8B; /* または、別のモノクロ系の色 */
+        }
+        .custom-link-color:hover {
+            color: #4A5568;
+        }
+
+        /* フォント */
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Roboto:wght@400;700&display=swap');
 
         body {
-            font-family: 'Noto Sans JP', sans-serif; /* 日本語フォント */
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #212121;
+            line-height: 1.6;
         }
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Roboto', sans-serif; /* 見出し用フォント */
+            font-family: 'Roboto', sans-serif;
+            color: #212121;
         }
+
+        /* 余白、行間 */
+        .list-item-container li {
+            margin-bottom: 1rem;
+        }
+        .section-divider {
+            border-top: 1px solid #cbd5e0;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+        .year-heading {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* カードスタイル */
+       .achievement-card {
+          background-color: #f7fafc;
+          box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+          border-radius: 0.5rem;
+          padding: 1.25rem;
+          margin-bottom: 1.5rem;
+       }
+       .achievement-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .achievement-card > ul > li{
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .achievement-card > ul > li > ul > li{
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* プロジェクトカード */
+        .project-card {
+          background-color: #f7fafc;
+          box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+          border-radius: 0.5rem;
+          padding: 1.25rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .project-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .project-card > ul > li{
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
     </style>
 </head>
-<body class="bg-white text-black">
+<body class="bg-white">
 
-    <header class="bg-black text-white py-4">
+    <header class="bg-gray-800 text-white py-4">
         <div class="container mx-auto px-4 flex justify-between items-center">
-            <h1 class="text-xl font-bold">atprunya</h1>
+            <h1 class="text-3xl font-extrabold text-white">atprunya</h1>
             <nav>
                 <ul class="flex space-x-6">
-                    <li><a href="#aboutme" class="hover:underline">About Me</a></li>
-                    <li><a href="#career" class="hover:underline">Career</a></li>
-                    <li><a href="#achievements" class="hover:underline">Achievements</a></li>
-                    <li><a href="#skills" class="hover:underline">Skills</a></li>
-                    <li><a href="#projects" class="hover:underline">Projects</a></li>
-                    <li><a href="#social" class="hover:underline">Social</a></li>
+                    <li><a href="#aboutme" class="hover:underline hover:text-gray-300"><span class="inline-block text-2xl"><i class="fas fa-male mr-1"></i></span>About Me</a></li>
+                    <li><a href="#career" class="hover:underline hover:text-gray-300"><span class="inline-block text-2xl"><i class="fas fa-building mr-1"></i></span>Career</a></li>
+                    <li><a href="#achievements" class="hover:underline hover:text-gray-300"><span class="inline-block text-2xl"><i class="fas fa-medal mr-1"></i></span>Achievements</a></li>
+                    <li><a href="#skills" class="hover:underline hover:text-gray-300"><span class="inline-block text-2xl"><i class="fas fa-wrench mr-1"></i></span>Skills</a></li>
+                    <li><a href="#projects" class="hover:underline hover:text-gray-300"><span class="inline-block text-2xl"><i class="fas fa-folder-open mr-1"></i></span>Projects</a></li>
+                    <li><a href="#social" class="hover:underline hover:text-gray-300"><span class="inline-block text-2xl"><i class="fas fa-share-alt mr-1"></i></span>Social</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <section id="aboutme" class="min-h-screen flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <img src="material/wanted.png" alt="wanted picture" class="mx-auto transition-all duration-500 ease-in-out transform hover:scale-110">
-        <div class="container mx-auto py-12 px-4">
-            <h2 class="text-3xl font-bold mb-8 page-title">About Me</h2>
+        <img src="material/wanted.png" alt="wanted picture" class="mx-auto transition-all duration-500 ease-in-out transform hover:scale-110 object-contain mb-8 w-[150px] h-auto">
+        <div class="container mx-auto py-4 px-4"> 
+            <h2 class="text-4xl font-bold mb-10 page-title">About Me</h2>
             <ul class="list-disc pl-10 list-item-container">
-                <li>本名：阿曽 祥大</li>
-                <li>年齢：18</li>
-                <li>興味：ゲーム開発・カウンターカルチャー・コント</li>
+                <li><span class ="inline-block text-2xl"><i class="fas fa-signature mr-2"></i></span>本名：阿曽 祥大</li>
+                <li><span class ="inline-block text-2xl"><i class="fas fa-birthday-cake mr-2"></i></span>年齢：18</li>
+                <li><span class ="inline-block text-2xl"><i class="fas fa-gamepad mr-2"></i></span>興味：ゲーム開発・カウンターカルチャー・コント</li>
             </ul>
         </div>
     </section>
 
-    <section id="career" class="container mx-auto py-12 px-4">
-        <h2 class="text-3xl font-bold mb-8 page-title">Career</h2>
+    <section id="career" class="container mx-auto py-16 px-4">
+        <h2 class="text-4xl font-bold mb-10 page-title">Career</h2>
         <ul class = "list-disc pl-10 list-item-container">
-            <li>2022/3 芝中学校 卒業</li>
-            <li>2025/3 芝高等学校 卒業</li>
-            <li>2025/4 筑波大学情報学群知識情報・図書館学類 入学</li>
+            <li><i class="fas fa-school mr-2"></i>2022/3 芝中学校 卒業</li>
+            <li><i class="fas fa-school mr-2"></i>2025/3 芝高等学校 卒業</li>
+            <li><i class="fas fa-university mr-2"></i>2025/4 筑波大学情報学群知識情報・図書館学類 入学</li>
         </ul>
     </section>
 
-    <section id="achievements" class="container mx-auto py-12 px-4">
-        <h2 class="text-3xl font-bold mb-8 page-title">Achievements</h2>
-        <h4 class = "text-xl font-bold">2024年度(高3)</h4>
-        <br>
-        <ul class="list-disc pl-10 list-item-container">
-            <li><strong>ITスーパーエンジニア・サポートプログラム “すごうで”</strong> 採択</li>
-            <ul class ="list-disc pl-10">
-                <li>100万円の助成金を獲得</li>
-            </ul>
-            </ul>
-            <br>
+    <section id="achievements" class="container mx-auto py-16 px-4">
+        <h2 class="text-4xl font-bold mb-10 page-title">Achievements</h2>
+        <h4 class = "text-2xl font-bold year-heading"><i class="fas fa-award mr-2"></i>2024年度(高3)</h4>
+        <div class="list-item-container">
+            <div class="achievement-card">
+                <p><i class="fas fa-trophy mr-2"></i>ITスーパーエンジニア・サポートプログラム “すごうで” 採択 (100万円の助成金獲得)</p>
+            </div>
+            <div class="achievement-card">
+                <p><i class="fas fa-trophy mr-2"></i>Panasonic “100BANCH” 採択</p>
+            </div>
+            <div class="achievement-card">
+                <p><i class="fas fa-trophy mr-2"></i>京都精華大学主催 SEIKA AWARD 2作品で入選 (現在審査中)</p>
+            </div>
+        </div>
 
-        <ul class="list-disc pl-10 list-item-container">
-            <li>Panasonic <strong>“100BANCH”</strong> 採択</li>
-        <br>
-        <li><strong>京都精華大学主催 SEIKA AWARD</strong> 2作品で入選</li>
-            <ul class="list-disc pl-10">
-            <li>現在審査中</li>
-            </ul>
-        </ul>
-        <br>
-        <br>
-        <br>
+        <hr class="my-12 border-t-2 border-gray-300">
 
+        <h4 class = "text-2xl font-bold year-heading"><i class="fas fa-award mr-2"></i>2023年度(高2)</h4>
+        <div class="list-item-container">
+            <div class="achievement-card">
+                <p><i class="fas fa-trophy mr-2"></i>iGEM(合成生物学の世界大会)でフランス渡航。世界一位(Grand Prize)獲得 (Japan-Unitedとして)
+                   <br><a href="https://www.nikkei.com/article/DGXZQOUC2262I0S4A120C2000000/" class="custom-link-color" target="_blank" rel="noopener noreferrer"><i class="fas fa-newspaper mr-2"></i>取材記事(日経)</a>
+                </p>
+            </div>
+            <div class="achievement-card">
+                <p><i class="fas fa-trophy mr-2"></i>読売新聞・東和薬品・横河電機主催「第5回未来と健康のための高校生ビジネスコンテスト」 個人出場。グランプリ獲得</p>
+            </div>
+            <div class="achievement-card">
+                <p><i class="fas fa-trophy mr-2"></i>アーツカレッジヨコハマ主催「高校生ITアプリアイデアコンテスト」個人出場。最優秀賞を獲得。</p>
+            </div>
+            <div class="achievement-card">
+                <p><i class="fas fa-trophy mr-2"></i>サイバーエージェント社の若手エンジニア支援プログラム”CA Tech Lounge” 採択</p>
+           </div>
+           <div class="achievement-card">
+                <p><i class="fas fa-trophy mr-2"></i>Makers University u-18 佐俣アンリ奨学金 採択</p>
+           </div>
+           <div class="achievement-card">
+                <p><i class="fas fa-trophy mr-2"></i>東急主催 QWS Challenge #16 採択</p>
+           </div>
+           <div class="achievement-card">
+                <p><i class="fas fa-trophy mr-2"></i>京都精華大学主催 SEIKA AWARD エッセイ部門 奨励賞</p>
+             </div>
+           <div class="achievement-card">
+                <p><i class="fas fa-trophy mr-2"></i>2024年度 数理の翼伊計島セミナー 採択</p>
+             </div>
+           <div class="achievement-card">
+                <p><i class="fas fa-trophy mr-2"></i>千葉大学GSCプログラム 修了</p>
+          </div>
+        </div>
 
-        <h4 class = "text-xl font-bold">2023年度(高2)</h4>
-        <br>
+        <hr class="my-12 border-t-2 border-gray-300">
+
+        <h4 class = "text-2xl font-bold year-heading"><i class="fas fa-award mr-2"></i>2021年度以前(0歳〜高1)</h4>
         <ul class="list-disc pl-10 list-item-container">
-            <li><strong>iGEM(合成生物学の世界大会)</strong>でフランス渡航。<strong>世界一位(Grand Prize)</strong>獲得 (Japan-Unitedとして)</li>
-            <ul class = "list-disc pl-10">
-                <li><p class ="text-blue-800 hover-text-indigo-600"><a href="https://www.nikkei.com/article/DGXZQOUC2262I0S4A120C2000000/">取材記事(日経)</a></p></li>
-            </ul>
-        <br>
-        <li><strong>読売新聞・東和薬品・横河電機主催「第5回未来と健康のための高校生ビジネスコンテスト」</strong> 個人出場。グランプリ獲得</li>
-        <br>
-        <li><strong>アーツカレッジヨコハマ主催「高校生ITアプリアイデアコンテスト」</strong>個人出場。最優秀賞を獲得。</li>
-        <br>
-        <li>サイバーエージェント社の若手エンジニア支援プログラム<strong>”CA Tech Lounge” </strong>採択</li>
-        <br>
-        <li><strong>Makers University u-18 佐俣アンリ奨学金</strong> 採択</li>
-        <br>
-        <li><strong>東急主催 QWS Challenge #16</strong> 採択</li>
-        <br>
-        <li><strong>京都精華大学主催 SEIKA AWARD</strong> エッセイ部門 奨励賞</li>
-        <br>
-        <li><strong>2024年度 数理の翼伊計島セミナー</strong> 採択</li>
-        <br>
-        <li><strong>千葉大学GSCプログラム</strong> 修了</li>
-        </ul>
-        <br>
-        <br>
-        <br>
-        <h4 class = "text-xl font-bold">2021年度以前(0歳〜高1)</h4>
-        <br>
-        <ul class="list-disc pl-10 list-item-container">
-            <li><strong>ずっとFPSゲームしてました</strong></li>
+            <li><i class="fas fa-gamepad mr-2 text-2xl"></i><strong>ずっとFPSゲームしてました</strong></li>
         </ul>
     </section>
-
-    <section id="skills" class="container mx-auto py-12 px-4">
-        <h2 class="text-3xl font-bold mb-8 page-title">Skills</h2>
+    <section id="skills" class="container mx-auto py-16 px-4">
+        <h2 class="text-4xl font-bold mb-10 page-title">Skills</h2>
         <ul class="list-none pl-0">
-        <li class="mb-4">
-            <h3 class="text-xl font-bold">Programming</h3>
-            <br>
+        <li class="mb-8">
+            <h3 class="text-2xl font-bold mb-6"><i class="fas fa-code mr-2 text-gray-700"></i>Programming</h3>
             <ul class="list-disc pl-10 list-item-container">
-            <li><strong>language</strong>: Python, C#, C</li>
-            <br>
-            <li><strong>Engine</strong>: Unity, Decker</li>
-            <br>
-            <li class="ml-4">JSをそこまで使わない一般的なものであればweb開発も可能です</li>
+            <li><span class="inline-block text-xl"><i class="fas fa-laptop-code mr-2"></i></span><strong>language</strong>: Python, C#, C</li>
+            <li><span class="inline-block text-xl"><i class="fas fa-cogs mr-2"></i></span><strong>Engine</strong>: Unity, Decker</li>
+            <li class="ml-4"><span class="inline-block text-xl"><i class="fas fa-globe mr-2"></i></span>JSをそこまで使わない一般的なものであればweb開発も可能です</li>
             </ul>
         </li>
-        <br>
-        <br>
-        <li class="mb-4">
-            <h3 class="text-xl font-bold">Communication & Collaboration</h3>
-            <br>
+    
+        <hr class="my-10 border-t-2 border-gray-300">
+    
+        <li class="mb-8">
+            <h3 class="text-2xl font-bold mb-6"><i class="fas fa-comments mr-2 text-gray-700"></i>Communication & Collaboration</h3>
             <ul class="list-disc pl-10 list-item-container">
-            <li><strong>英語が少しできます</strong>(英検準一級を所持しています。高度な会話でなければ基本的に可能です)</li>
-            <br>
-            <li><strong>イベント主催経験</strong></li>
-            <br>
+            <li><span class ="inline-block text-xl"><i class="fas fa-language mr-2"></i></span><strong>英語が少しできます</strong>(英検準一級を所持しています。高度な会話でなければ基本的に可能です)</li>
+            <li><span class ="inline-block text-xl"><i class="fas fa-users mr-2"></i></span><strong>イベント主催経験</strong>
                 <ul class ="list-disc pl-5">
                 <li>Larva06でのオフラインイベントや、部長を務めていた落語研究部での公演を企画した経験があります。</li>
                 </ul>
-                <br>
-            <li><strong>プレゼンテーション</strong>がかなり得意です。</li>
-            <br>
+            </li>
+            <li><span class ="inline-block text-xl"><i class="fas fa-chalkboard-teacher mr-2"></i></span><strong>プレゼンテーション</strong>がかなり得意です。
             <ul class = "list-disc pl-5">
                 <li>プレゼンに限らず、何かを認識して、抽象化して説明したり、応用したりするのが得意です。</li>
             </ul>
         </li>
-        </ul>
-        <br>
-        <br>
-        <li class="mb-4">
-            <h3 class="text-xl font-bold">Writing</h3>
-            <br>
-            <ul class="list-disc pl-10 list-item-container">
-            <li>Larva06を中心に、さまざまな媒体でwebライティングを行ってきました。</li>
-            <br>
-            <li>また、いくつかのゲームで脚本を担当しています。</li>
-            <br>
-            <li>落語研究部で漫才やコントなどの執筆を行ってきたこともあり、コメディ色の強いものが得意です。</li>
             </ul>
         </li>
-        <br>
-        <li class="mb-4">
-            <h3 class="text-xl font-bold">Others</h3>
-            <br>
+    
+        <hr class="my-10 border-t-2 border-gray-300">
+    
+        <li class="mb-8">
+            <h3 class="text-2xl font-bold mb-6"><i class="fas fa-pen-nib mr-2 text-gray-700"></i>Writing</h3>
             <ul class="list-disc pl-10 list-item-container">
-            <li>人と仲良くなって何か新しいことをやるのが好きです</li>
-            <br>
-            <li>漫画やゲーム、音楽といったサブカルチャー、ハッカーカルチャーをはじめとしたカウンターカルチャーがとても好きです。</li>
-            <br>
-
+            <li><span class ="inline-block text-xl"><i class="fas fa-pencil-alt mr-2"></i></span>Larva06を中心に、さまざまな媒体でwebライティングを行ってきました。</li>
+            <li><span class ="inline-block text-xl"><i class="fas fa-gamepad mr-2"></i></span>また、いくつかのゲームで脚本を担当しています。</li>
+            <li><span class ="inline-block text-xl"><i class="fas fa-theater-masks mr-2"></i></span>落語研究部で漫才やコントなどの執筆を行ってきたこともあり、コメディ色の強いものが得意です。</li>
+            </ul>
+        </li>
+    
+        <hr class="my-10 border-t-2 border-gray-300">
+    
+        <li class="mb-8">
+            <h3 class="text-2xl font-bold mb-6"><i class="fas fa-ellipsis-h mr-2 text-gray-700"></i>Others</h3>
+            <ul class="list-disc pl-10 list-item-container">
+            <li><span class ="inline-block text-xl"><i class="fas fa-users mr-2"></i></span>人と仲良くなって何か新しいことをやるのが好きです</li>
+            <li><span class ="inline-block text-xl"><i class="fas fa-icons mr-2"></i></span>漫画やゲーム、音楽といったサブカルチャー、ハッカーカルチャーをはじめとしたカウンターカルチャーがとても好きです。</li>
+    
             <ul class = "list-disc pl-10">
-                <li><p class ="text-blue-800 hover-text-indigo-600"><a href="https://scrapbox.io/zakkityou-atprunya/sukina-mono">こちらに好きなもののリストを作りました</a></p></li>
+                <li><i class="fas fa-link mr-2"></i><a href="https://scrapbox.io/zakkityou-atprunya/sukina-mono" class="custom-link-color" target="_blank" rel="noopener noreferrer">こちらに好きなもののリストを作りました</a></li>
             </ul>
             </ul>
         </li>
         </ul>
     </section>
-
-    <section id="projects" class="container mx-auto py-12 px-4">
-        <h2 class="text-3xl font-bold mb-8 page-title">Projects</h2>
-        <ul class = "list-item-container">
-            <li><span class="font-bold text-lg">MEETME</span></li>
-            <br>
-            <ul class = "list-disc pl-10">
-                <li>先述した株式会社ラック<strong>「すごうで」</strong>で行ったプロジェクト。</li>
-                <br>
-                <li>プロジェクトリーダーを担当。自分のデジタルツインと対話できる体験を機械学習を活用して設計した。2024年4月に<strong>ニコニコ超会議</strong>で展示を行った。</li>
+    
+    <section id="projects" class="container mx-auto py-16 px-4">
+        <h2 class="text-4xl font-bold mb-10 page-title">Projects</h2>
+        <div class = "list-item-container">
+            <div class="project-card">
+                <span class="font-bold text-lg"><i class="fas fa-project-diagram mr-2 text-gray-700"></i>MEETME</span>
+                <ul>
+                    <li>先述した株式会社ラック<strong>「すごうで」</strong>で行ったプロジェクト。</li>
+                    <li>プロジェクトリーダーを担当。自分のデジタルツインと対話できる体験を機械学習を活用して設計した。2024年4月に<strong>ニコニコ超会議</strong>で展示を行った。</li>
                 </ul>
-                <br>
-                <br>
-
-            <li><span class="font-bold text-lg">iGEM Japan-United</span></li>
-            <br>
-            <ul class = "list-disc pl-10">
-                <li><strong>合成生物学の世界大会"iGEM"</strong>に出場するためのチーム。創設時より携わった。</li>
-                <br>
-            <li>2023年大会(jamboree)にて<strong>Grand Prize(世界1位)</strong>を獲得。日経などに掲載。</li>
-            </ul>
-                <br>
-                <br>
-            <li><span class="font-bold text-lg">sizzurp dolls</span></li>
-            <br>
-            <ul class = "list-disc pl-10">
-                <li><strong>ゲームエンジン「Decker」</strong>で開発したサイケデリックノベルゲーム。</li>
-                <br>
-                <li>異常なストーリー展開と色彩の気持ち悪さからTwitterでそこそこの話題を呼び、何人かのVTuberさんに実況していただいた。</li>
-            </ul>
-            <br>
-            <br>
-            <li><span class="font-bold text-lg">rurukiki</span></li>
-            <br>
-            <ul class = "list-disc pl-10">
-                <li>友人二名と開発中のノベルゲーム。<strong>プロデューサー・脚本・プログラマー</strong>を担当。</li>
-                <br>
-                <li>トレーラーが<strong>ファミ通</strong>や<strong>電ファミニコゲーマー</strong>に掲載され、大きな話題を呼んだ。</li>
-                <ul class = "list-disc pl-10">
-                <li><p class = "text-blue-800 hover-text-indigo-600"><a href="https://x.com/denfaminicogame/status/1834547805228314918">掲載されたトレーラー</a></p></li>
+            </div>
+    
+            <hr class="my-10 border-t-2 border-gray-300">
+    
+            <div class="project-card">
+                <span class="font-bold text-lg"><i class="fas fa-project-diagram mr-2 text-gray-700"></i>iGEM Japan-United</span>
+                <ul>
+                    <li><strong>合成生物学の世界大会"iGEM"</strong>に出場するためのチーム。創設時より携わった。</li>
+                    <li>2023年大会(jamboree)にて<strong>Grand Prize(世界1位)</strong>を獲得。日経などに掲載。</li>
                 </ul>
-            </ul>
-            <br>
-            <br>
-
-            <li><span class="font-bold text-lg">Larva06.com</span>
-                <ul class ="list-disc pl-10">
-                    <br>
-                    <li>創設者として二年に渡りPMを担当。<strong>一般社団法人lirfa</strong>として法人化。代表理事に就任後、事業継承。</li>
-                    <br>
-                    <li>執筆した記事リスト⇩
-                        <ul class = "list-disc pl-10">
-                            <li><p class ="text-blue-800 hover-text-indigo-600"><a href="https://docs.google.com/document/d/10fILBx5Kl4eXApB3emQucLvbfBUCjZvw090JpxlVSkI/edit?usp=sharing">Larva06 阿曽担当記事リスト</a></p></li>
-                        </ul>
-                    </li>
+            </div>
+    
+            <hr class="my-10 border-t-2 border-gray-300">
+    
+            <div class="project-card">
+                <span class="font-bold text-lg"><i class="fas fa-project-diagram mr-2 text-gray-700"></i>sizzurp dolls</span>
+                <ul>
+                    <li><strong>ゲームエンジン「Decker」</strong>で開発したサイケデリックノベルゲーム。</li>
+                    <li>異常なストーリー展開と色彩の気持ち悪さからTwitterでそこそこの話題を呼び、何人かのVTuberさんに実況していただいた。</li>
                 </ul>
-            </li>
-            <br>
-            <br>
-
-            <li><span class="font-bold text-lg">執筆活動</span>
-                <ul class ="list-disc pl-10">
-                <br>
-                <li>エッセイ・評論などを関西コミティアで二回寄稿</li>
+            </div>
+    
+            <hr class="my-10 border-t-2 border-gray-300">
+    
+            <div class="project-card">
+                <span class="font-bold text-lg"><i class="fas fa-project-diagram mr-2 text-gray-700"></i>rurukiki</span>
+                <ul>
+                    <li>友人二名と開発中のノベルゲーム。<strong>プロデューサー・脚本・プログラマー</strong>を担当。</li>
+                    <li>トレーラーが<strong>ファミ通</strong>や<strong>電ファミニコゲーマー</strong>に掲載され、大きな話題を呼んだ。
+                    <ul>
+                    <li><i class="fas fa-link mr-2"></i><a href="https://x.com/denfaminicogame/status/1834547805228314918" class="custom-link-color" target="_blank" rel="noopener noreferrer">掲載されたトレーラー</a></li>
+                    </ul>
                 </ul>
-            </li>
-            <br>
-            <br>
-            <li><span class = "font-bold text-lg">同人でのゲーム開発プロジェクト</span>             <ul>
-                <br>
-            <ul class ="list-disc pl-10">
-                <li>現在開発中。<strong>プログラマーとプロデューサー、一部脚本</strong>を担当。非公開</li>
-            </ul>
-            </li>
-            <br>
-            <br>
-            <li><span class ="font-bold text-lg">音楽ユニットのプロデュース</span>
-                <ul class ="list-disc pl-10">
-                <br>
-                <li>現在進行中。<strong>プロデューサーを担当。</strong>非公開</li>
-            </ul>
-            </li>
-            <br>
-            <br>
-            <li><span class ="font-bold text-lg">アーティストのwebサイト開発</span>
-            <ul class ="list-disc pl-10">
-                <br>
-                <li>納品済み。<strong>2月中に公開予定。</strong></li>
-            </ul>
-            </li>
+            </div>
+    
+            <hr class="my-10 border-t-2 border-gray-300">
+    
+            <div class="project-card">
+                <span class="font-bold text-lg"><i class="fas fa-project-diagram mr-2 text-gray-700"></i>Larva06.com</span>
+                    <ul>
+                        <li>創設者として二年に渡りPMを担当。<strong>一般社団法人lirfa</strong>として法人化。代表理事に就任後、事業継承。</li>
+                        <li>執筆した記事リスト⇩
+                            <ul>
+                                <li>
+                                    <i class="fas fa-link mr-2"></i><a href="https://docs.google.com/document/d/10fILBx5Kl4eXApB3emQucLvbfBUCjZvw090JpxlVSkI/edit?usp=sharing" class="custom-link-color" target="_blank" rel="noopener noreferrer">Larva06 阿曽担当記事リスト</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+            </div>
+    
+            <hr class="my-10 border-t-2 border-gray-300">
+    
+            <div class="project-card">
+                <span class="font-bold text-lg"><i class="fas fa-project-diagram mr-2 text-gray-700"></i>執筆活動</span>
+                <ul>
+                    <li>エッセイ・評論などを関西コミティアで二回寄稿</li>
+                </ul>
+            </div>
+    
+            <hr class="my-10 border-t-2 border-gray-300">
+    
+            <div class="project-card">
+                <span class = "font-bold text-lg"><i class="fas fa-project-diagram mr-2 text-gray-700"></i>同人でのゲーム開発プロジェクト</span>
+                  <ul>
+                      <li>現在開発中。<strong>プログラマーとプロデューサー、一部脚本</strong>を担当。非公開</li>
+                  </ul>
+              </div>
+    
+              <hr class="my-10 border-t-2 border-gray-300">
+    
+              <div class="project-card">
+                <span class="font-bold text-lg"><i class="fas fa-project-diagram mr-2 text-gray-700"></i>音楽ユニットのプロデュース</span>
+                <ul>
+                    <li>現在進行中。<strong>プロデューサーを担当。</strong>非公開</li>
+                </ul>
+              </div>
+    
+              <hr class="my-10 border-t-2 border-gray-300">
+    
+              <div class="project-card">
+                <span class ="font-bold text-lg"><i class="fas fa-project-diagram mr-2 text-gray-700"></i>アーティストのwebサイト開発</span>
+                <ul>
+                    <li>納品済み。<strong>2月中に公開予定。</strong></li>
+                </ul>
+            </div>
+        </div>
     </section>
-
-    <section id="social" class="container mx-auto py-12 px-4">
-        <h2 class="text-3xl font-bold mb-8 page-title">Social</h2>
-        <ul class ="list-disc pl-10 list-item-container">
-
-            <li><p class ="text-blue-800 hover-text-indigo-600"><a href="https://x.com/Pi_AtPrunya">Twitter</a></p></li>
-            <br>
-            <li><p class ="text-blue-800 hover-text-indigo-600"><a href="https://note.com/atprunya">note</a></p></li>
-            <br>
-            <li><p class ="text-blue-800 hover-text-indigo-600"><a href="atprunya@gmail.com">atprunya@gmail.com</a></p></li>
-            <br>
-            <li><p class ="text-blue-800 hover-text-indigo-600"><a href="https://music.youtube.com/playlist?list=PLK-gXjQ0Fer4QC0JUDLqVzL6aUvezoElZ">YouTubeMusic(プレイリスト)</a></p></li>
+    <section id="social" class="container mx-auto py-16 px-4">
+        <h2 class="text-4xl font-bold mb-10 page-title">Social</h2>
+        <ul class="list-disc pl-10 list-item-container">
+            <li><span class="inline-block text-2xl"><i class="fab fa-twitter mr-2 text-blue-500"></i></span><a href="https://x.com/Pi_AtPrunya" class="custom-link-color" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+            <li><span class="inline-block text-2xl"><i class="fab fa-neos mr-2 text-gray-700"></i></span><a href="https://note.com/atprunya" class="custom-link-color" target="_blank" rel="noopener noreferrer">note</a></li>
+            <li><span class="inline-block text-2xl"><i class="fas fa-envelope mr-2 text-gray-700"></i></span><a href="atprunya@gmail.com" class="custom-link-color" target="_blank" rel="noopener noreferrer">atprunya@gmail.com</a></li>
+            <li><span class="inline-block text-2xl"><i class="fab fa-youtube mr-2 text-red-600"></i></span><a href="https://music.youtube.com/playlist?list=PLK-gXjQ0Fer4QC0JUDLqVzL6aUvezoElZ" class="custom-link-color" target="_blank" rel="noopener noreferrer">YouTubeMusic(プレイリスト)</a></li>
         </ul>
     </section>
-
+    
      <script>
         // Intersection Observer APIを使用して要素の可視性を監視
         const listContainers = document.querySelectorAll('.list-item-container');
-
+    
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -341,11 +399,11 @@
         }, {
             threshold: 0.1 // 要素が10%以上ビューポートに入ったらトリガー
         });
-
+    
         listContainers.forEach(container => {
             observer.observe(container);
         });
-
+    
     </script>
-</body>
-</html>
+    </body>
+    </html>
