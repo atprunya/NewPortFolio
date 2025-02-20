@@ -7,14 +7,54 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        .page-title{
+        .page-title {
             border-bottom: solid 1px gray;
+            position: relative; /* アニメーション用の相対位置指定 */
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Stencil&display=swap');
+        /* アニメーション用の下線 */
+        .page-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -1px; /* ボーダーの下に配置 */
+            width: 0; /* 最初は幅0 */
+            height: 2px; /* 下線の太さ */
+            background-color: #4F46E5; /* 下線の色（Tailwindのindigo-600） */
+            transition: width 0.3s ease; /* アニメーション効果 */
+        }
+
+        .page-title:hover::after {
+            width: 100%; /* ホバー時に幅を100%に */
+        }
+
+        /* リスト項目のアニメーション */
+       .list-item-container li {
+          opacity: 0; /* 初期状態では非表示 */
+          transform: translateY(20px); /* 下から上に移動 */
+          transition: opacity 0.5s, transform 0.5s; /* アニメーション効果 */
+        }
+        .list-item-container.animate-list li{
+            opacity: 1;
+            transform: translateY(0);
+
+        }
+        .list-item-container{
+            transition: all 0.5s;
+        }
+        /*ホバー時の色*/
+        .hover-text-indigo-600:hover{
+            color: #4F46E5;
+        }
+
+        /* フォント（Noto Sans JPとRoboto）*/
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Roboto:wght@400;700&display=swap');
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Noto Sans JP', sans-serif; /* 日本語フォント */
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Roboto', sans-serif; /* 見出し用フォント */
         }
     </style>
 </head>
@@ -37,10 +77,10 @@
     </header>
 
     <section id="aboutme" class="min-h-screen flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <img src="material/wanted.png" alt="wanted picture" class="mx-auto">
+        <img src="material/wanted.png" alt="wanted picture" class="mx-auto transition-all duration-500 ease-in-out transform hover:scale-110">
         <div class="container mx-auto py-12 px-4">
             <h2 class="text-3xl font-bold mb-8 page-title">About Me</h2>
-            <ul class="list-disc pl-10">
+            <ul class="list-disc pl-10 list-item-container">
                 <li>本名：阿曽 祥大</li>
                 <li>年齢：18</li>
                 <li>興味：ゲーム開発・カウンターカルチャー・コント</li>
@@ -50,7 +90,7 @@
 
     <section id="career" class="container mx-auto py-12 px-4">
         <h2 class="text-3xl font-bold mb-8 page-title">Career</h2>
-        <ul class = "list-disc pl-10">
+        <ul class = "list-disc pl-10 list-item-container">
             <li>2022/3 芝中学校 卒業</li>
             <li>2025/3 芝高等学校 卒業</li>
             <li>2025/4 筑波大学情報学群知識情報・図書館学類 入学</li>
@@ -61,7 +101,7 @@
         <h2 class="text-3xl font-bold mb-8 page-title">Achievements</h2>
         <h4 class = "text-xl font-bold">2024年度(高3)</h4>
         <br>
-        <ul class="list-disc pl-10">
+        <ul class="list-disc pl-10 list-item-container">
             <li><strong>ITスーパーエンジニア・サポートプログラム “すごうで”</strong> 採択</li>
             <ul class ="list-disc pl-10">
                 <li>100万円の助成金を獲得</li>
@@ -69,8 +109,8 @@
             </ul>
             <br>
 
-        <ul class="list-disc pl-10">
-        <li>Panasonic <strong>“100BANCH”</strong> 採択</li>
+        <ul class="list-disc pl-10 list-item-container">
+            <li>Panasonic <strong>“100BANCH”</strong> 採択</li>
         <br>
         <li><strong>京都精華大学主催 SEIKA AWARD</strong> 2作品で入選</li>
             <ul class="list-disc pl-10">
@@ -79,14 +119,15 @@
         </ul>
         <br>
         <br>
+        <br>
 
 
         <h4 class = "text-xl font-bold">2023年度(高2)</h4>
         <br>
-        <ul class="list-disc pl-10">
+        <ul class="list-disc pl-10 list-item-container">
             <li><strong>iGEM(合成生物学の世界大会)</strong>でフランス渡航。<strong>世界一位(Grand Prize)</strong>獲得 (Japan-Unitedとして)</li>
             <ul class = "list-disc pl-10">
-                <li><p class ="text-blue-800"><a href="https://www.nikkei.com/article/DGXZQOUC2262I0S4A120C2000000/">取材記事(日経)</a></p></li>
+                <li><p class ="text-blue-800 hover-text-indigo-600"><a href="https://www.nikkei.com/article/DGXZQOUC2262I0S4A120C2000000/">取材記事(日経)</a></p></li>
             </ul>
         <br>
         <li><strong>読売新聞・東和薬品・横河電機主催「第5回未来と健康のための高校生ビジネスコンテスト」</strong> 個人出場。グランプリ獲得</li>
@@ -105,6 +146,14 @@
         <br>
         <li><strong>千葉大学GSCプログラム</strong> 修了</li>
         </ul>
+        <br>
+        <br>
+        <br>
+        <h4 class = "text-xl font-bold">2021年度以前(0歳〜高1)</h4>
+        <br>
+        <ul class="list-disc pl-10 list-item-container">
+            <li><strong>ずっとFPSゲームしてました</strong></li>
+        </ul>
     </section>
 
     <section id="skills" class="container mx-auto py-12 px-4">
@@ -113,46 +162,60 @@
         <li class="mb-4">
             <h3 class="text-xl font-bold">Programming</h3>
             <br>
-            <ul class="list-disc pl-10">
+            <ul class="list-disc pl-10 list-item-container">
             <li><strong>language</strong>: Python, C#, C</li>
+            <br>
             <li><strong>Engine</strong>: Unity, Decker</li>
+            <br>
             <li class="ml-4">JSをそこまで使わない一般的なものであればweb開発も可能です</li>
             </ul>
         </li>
         <br>
+        <br>
         <li class="mb-4">
             <h3 class="text-xl font-bold">Communication & Collaboration</h3>
             <br>
-            <ul class="list-disc pl-5">
-            <li>English(英検準一級を所持しています。高度な会話でなければ基本的に可能です)</li>
-            <li>チーム開発経験</li>
-            <li>イベント主催経験</li>
+            <ul class="list-disc pl-10 list-item-container">
+            <li><strong>英語が少しできます</strong>(英検準一級を所持しています。高度な会話でなければ基本的に可能です)</li>
+            <br>
+            <li><strong>イベント主催経験</strong></li>
+            <br>
                 <ul class ="list-disc pl-5">
                 <li>Larva06でのオフラインイベントや、部長を務めていた落語研究部での公演を企画した経験があります。</li>
                 </ul>
-            <li>プレゼンテーションがかなり得意です。</li>
+                <br>
+            <li><strong>プレゼンテーション</strong>がかなり得意です。</li>
+            <br>
             <ul class = "list-disc pl-5">
-                <li>何かを認識して、抽象化して説明したり、応用したりするのが得意です。</li>
+                <li>プレゼンに限らず、何かを認識して、抽象化して説明したり、応用したりするのが得意です。</li>
             </ul>
         </li>
+        </ul>
+        <br>
         <br>
         <li class="mb-4">
             <h3 class="text-xl font-bold">Writing</h3>
-            <ul class="list-disc pl-5">
+            <br>
+            <ul class="list-disc pl-10 list-item-container">
             <li>Larva06を中心に、さまざまな媒体でwebライティングを行ってきました。</li>
+            <br>
             <li>また、いくつかのゲームで脚本を担当しています。</li>
+            <br>
             <li>落語研究部で漫才やコントなどの執筆を行ってきたこともあり、コメディ色の強いものが得意です。</li>
             </ul>
         </li>
         <br>
         <li class="mb-4">
             <h3 class="text-xl font-bold">Others</h3>
-            <ul class="list-disc pl-5">
+            <br>
+            <ul class="list-disc pl-10 list-item-container">
             <li>人と仲良くなって何か新しいことをやるのが好きです</li>
+            <br>
             <li>漫画やゲーム、音楽といったサブカルチャー、ハッカーカルチャーをはじめとしたカウンターカルチャーがとても好きです。</li>
+            <br>
 
             <ul class = "list-disc pl-10">
-                <li><p class ="text-blue-800"><a href="https://scrapbox.io/zakkityou-atprunya/sukina-mono">こちらに好きなもののリストを作りました</a></p></li>
+                <li><p class ="text-blue-800 hover-text-indigo-600"><a href="https://scrapbox.io/zakkityou-atprunya/sukina-mono">こちらに好きなもののリストを作りました</a></p></li>
             </ul>
             </ul>
         </li>
@@ -161,80 +224,128 @@
 
     <section id="projects" class="container mx-auto py-12 px-4">
         <h2 class="text-3xl font-bold mb-8 page-title">Projects</h2>
-        <ul>
+        <ul class = "list-item-container">
             <li><span class="font-bold text-lg">MEETME</span></li>
+            <br>
             <ul class = "list-disc pl-10">
                 <li>先述した株式会社ラック<strong>「すごうで」</strong>で行ったプロジェクト。</li>
+                <br>
                 <li>プロジェクトリーダーを担当。自分のデジタルツインと対話できる体験を機械学習を活用して設計した。2024年4月に<strong>ニコニコ超会議</strong>で展示を行った。</li>
                 </ul>
                 <br>
+                <br>
 
             <li><span class="font-bold text-lg">iGEM Japan-United</span></li>
-                <li>合成生物学の世界大会"iGEM"に出場するためのチーム。創設時より携わった。</li>
+            <br>
             <ul class = "list-disc pl-10">
-                <li>2023年大会(jamboree)にてGrand Prize(世界1位)を獲得。日経などに掲載。</li>
+                <li><strong>合成生物学の世界大会"iGEM"</strong>に出場するためのチーム。創設時より携わった。</li>
+                <br>
+            <li>2023年大会(jamboree)にて<strong>Grand Prize(世界1位)</strong>を獲得。日経などに掲載。</li>
             </ul>
                 <br>
+                <br>
             <li><span class="font-bold text-lg">sizzurp dolls</span></li>
+            <br>
             <ul class = "list-disc pl-10">
-                <li>ゲームエンジン「Decker」で開発したサイケデリックノベルゲーム。</li>
-                <li>異常なストーリー展開と色彩の気持ち悪さからTwitterでそこそこの話題を呼び、何人かのVTuberに実況していただいた。</li>
+                <li><strong>ゲームエンジン「Decker」</strong>で開発したサイケデリックノベルゲーム。</li>
+                <br>
+                <li>異常なストーリー展開と色彩の気持ち悪さからTwitterでそこそこの話題を呼び、何人かのVTuberさんに実況していただいた。</li>
             </ul>
             <br>
+            <br>
             <li><span class="font-bold text-lg">rurukiki</span></li>
+            <br>
             <ul class = "list-disc pl-10">
-                <li>友人二名と開発中のノベルゲーム。プロデューサー・脚本・プログラマーを担当。</li>
-                <li>トレーラーがファミ通や電ファミニコゲーマーに掲載され、大きな話題を呼んだ。</li>
+                <li>友人二名と開発中のノベルゲーム。<strong>プロデューサー・脚本・プログラマー</strong>を担当。</li>
+                <br>
+                <li>トレーラーが<strong>ファミ通</strong>や<strong>電ファミニコゲーマー</strong>に掲載され、大きな話題を呼んだ。</li>
                 <ul class = "list-disc pl-10">
-                <li><p class = "text-blue-800"><a href="https://x.com/denfaminicogame/status/1834547805228314918">掲載されたトレーラー</a></p></li>
+                <li><p class = "text-blue-800 hover-text-indigo-600"><a href="https://x.com/denfaminicogame/status/1834547805228314918">掲載されたトレーラー</a></p></li>
                 </ul>
             </ul>
+            <br>
             <br>
 
             <li><span class="font-bold text-lg">Larva06.com</span>
                 <ul class ="list-disc pl-10">
-                    <li>創設者。一般社団法人lirfaとして法人化。</li>
+                    <br>
+                    <li>創設者として二年に渡りPMを担当。<strong>一般社団法人lirfa</strong>として法人化。代表理事に就任後、事業継承。</li>
+                    <br>
                     <li>執筆した記事リスト⇩
                         <ul class = "list-disc pl-10">
-                            <li><p class ="text-blue-800"><a href="https://docs.google.com/document/d/10fILBx5Kl4eXApB3emQucLvbfBUCjZvw090JpxlVSkI/edit?usp=sharing">Larva06 阿曽担当記事リスト</a></p></li>
+                            <li><p class ="text-blue-800 hover-text-indigo-600"><a href="https://docs.google.com/document/d/10fILBx5Kl4eXApB3emQucLvbfBUCjZvw090JpxlVSkI/edit?usp=sharing">Larva06 阿曽担当記事リスト</a></p></li>
                         </ul>
                     </li>
                 </ul>
             </li>
             <br>
+            <br>
 
             <li><span class="font-bold text-lg">執筆活動</span>
                 <ul class ="list-disc pl-10">
-                    <li>エッセイ・評論などを関西コミティアで二回寄稿</li>
+                <br>
+                <li>エッセイ・評論などを関西コミティアで二回寄稿</li>
                 </ul>
             </li>
             <br>
-            <li><span class = "font-bold text-lg">同人でのゲーム開発プロジェクト</span>                <ul>
-                <ul class ="list-disc pl-10">
-                    <li>現在開発中。プログラマーとプロデューサー、一部脚本を担当。非公開</li>
-                </ul>
+            <br>
+            <li><span class = "font-bold text-lg">同人でのゲーム開発プロジェクト</span>             <ul>
+                <br>
+            <ul class ="list-disc pl-10">
+                <li>現在開発中。<strong>プログラマーとプロデューサー、一部脚本</strong>を担当。非公開</li>
+            </ul>
             </li>
+            <br>
             <br>
             <li><span class ="font-bold text-lg">音楽ユニットのプロデュース</span>
                 <ul class ="list-disc pl-10">
-                    <li>現在進行中。プロデューサーを担当。非公開</li>
-                </ul>
+                <br>
+                <li>現在進行中。<strong>プロデューサーを担当。</strong>非公開</li>
+            </ul>
             </li>
             <br>
+            <br>
             <li><span class ="font-bold text-lg">アーティストのwebサイト開発</span>
-                <ul class ="list-disc pl-10">
-                    <li>納品済み。2月中に公開予定。</li>
-                </ul>
+            <ul class ="list-disc pl-10">
+                <br>
+                <li>納品済み。<strong>2月中に公開予定。</strong></li>
+            </ul>
             </li>
     </section>
 
     <section id="social" class="container mx-auto py-12 px-4">
         <h2 class="text-3xl font-bold mb-8 page-title">Social</h2>
-        <ul class ="list-disc pl-10">
+        <ul class ="list-disc pl-10 list-item-container">
 
-                <li><p class ="text-blue-800"><a href="https://x.com/Pi_AtPrunya">Twitter</a></p></li>
-                <li><p class ="text-blue-800"><a href="https://note.com/atprunya">note</a></p></li>
-                <li><p class ="text-blue-800"><a href="atprunya@gmail.com">atprunya@gmail.com</a></p></li>
-                <li><p class ="text-blue-800"><a href="https://music.youtube.com/playlist?list=PLK-gXjQ0Fer4QC0JUDLqVzL6aUvezoElZ">YouTubeMusic(プレイリスト)</a></p></li>
+            <li><p class ="text-blue-800 hover-text-indigo-600"><a href="https://x.com/Pi_AtPrunya">Twitter</a></p></li>
+            <br>
+            <li><p class ="text-blue-800 hover-text-indigo-600"><a href="https://note.com/atprunya">note</a></p></li>
+            <br>
+            <li><p class ="text-blue-800 hover-text-indigo-600"><a href="atprunya@gmail.com">atprunya@gmail.com</a></p></li>
+            <br>
+            <li><p class ="text-blue-800 hover-text-indigo-600"><a href="https://music.youtube.com/playlist?list=PLK-gXjQ0Fer4QC0JUDLqVzL6aUvezoElZ">YouTubeMusic(プレイリスト)</a></p></li>
         </ul>
     </section>
+
+     <script>
+        // Intersection Observer APIを使用して要素の可視性を監視
+        const listContainers = document.querySelectorAll('.list-item-container');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-list'); // クラスを追加してアニメーションをトリガー
+                    observer.unobserve(entry.target); // 一度アニメーションしたら監視を停止
+                }
+            });
+        }, {
+            threshold: 0.1 // 要素が10%以上ビューポートに入ったらトリガー
+        });
+
+        listContainers.forEach(container => {
+            observer.observe(container);
+        });
+
+    </script>
+</body>
+</html>
